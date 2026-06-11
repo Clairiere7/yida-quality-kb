@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>仪达质检知识库 - 登录</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <h1>🔬 仪达质检知识库</h1>
+      <p class="subtitle">智能热管理科技（马鞍山）有限公司</p>
+
+      <input type="text" id="username" placeholder="用户名" autocomplete="username">
+      <input type="password" id="password" placeholder="密码" autocomplete="current-password">
+      <button onclick="doLogin()">登 录</button>
+      <div class="login-error" id="loginError" style="display:none;"></div>
+
+      <div class="login-hint">
+        预置测试账号：<br>
+        质检员小王 / 123456<br>
+        采购小李 / 123456<br>
+        销售小张 / 123456<br>
+        管理员 / admin123
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script>
+    // 已登录则直接跳转
+    if (Auth.isLoggedIn()) {
+      window.location.href = '/app';
+    }
+
+    async function doLogin() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorDiv = document.getElementById('loginError');
+
+      if (!username || !password) {
+        errorDiv.style.display = 'block';
+        errorDiv.textContent = '请输入用户名和密码';
+        return;
+      }
+
+      try {
+        const user = await Auth.login(username, password);
+        window.location.href = '/app';
+      } catch (err) {
+        errorDiv.style.display = 'block';
+        errorDiv.textContent = err.message;
+      }
+    }
+
+    // 回车登录
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') doLogin();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+{
+  "productId": "DS122 11615",
+  "project": "",
+  "productName": "吹脚风门板海绵1",
+  "importanceLevel": "一般部件",
+  "version": "A/0",
+  "preparedBy": "姜孝龙",
+  "preparedDate": "2026-01-09",
+  "company": "马鞍山仪达空调有限公司",
+  "documentNumber": "",
+  "inspectionType": "进料检验",
+  "sourceFile": "DS122 11615检规1.xlsx",
+  "sourceSheet": "Sheet1",
+  "totalCheckItems": 15,
+  "checkItems": [
+    {
+      "seq": 1,
+      "category": "外箱",
+      "standard": "1.包装箱外观良好，无破损、变形，外包装标识产品信息、箱内实物标签信息与报检单一致；",
+      "tool": "目测",
+      "sampleSize": "3件",
+      "frequency": "每批",
+      "controlMethod": "进料检验记录单",
+      "reactionPlan": "隔离/报告"
+    },
+    {
+      "seq": 2,
+      "category": "标签与外观",
+      "standard": "1.产品表面清洁，周边剪切平整\n2.不允许有褶皱，破损，油污\n3.离型纸易剥离",
+      "tool": "目视",
+      "sampleSize": "3件",
+      "frequency": "每批",
+      "controlMethod": "进料检验记录单",
+      "reactionPlan": "隔离/报告"
+    },
+    {
+      "seq": 3,
+      "category": "尺寸/重量\n单位：mm",
+      "standard": "1.  137±0.5",
+      "tool": "卡尺",
+      "sampleSize": "3件",
+      "frequency": "每批",
+      "controlMethod": "进料检验记录单",
+      "reactionPlan": "隔离/报告",
+      "_imageRefs": [],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "1",
+            "num": 1
+          }
+        ],
+        "values": [
+          ".  137±0.5"
+        ],
+        "tolerances": [],
+        "fullText": "1.  137±0.5"
+      }
+    },
+    {
+      "seq": 3,
+      "category": "尺寸/重量\n单位：mm",
+      "standard": "2.  17.1±0.2",
+      "tool": "卡尺",
+      "sampleSize": "3件",
+      "frequency": "每批",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "2",
+            "num": 2
+          }
+        ],
+        "values": [
+          ".  17.1±0.2"
+        ],
+        "tolerances": [],
+        "fullText": "2.  17.1±0.2"
+      }
+    },
+    {
+      "seq": 3,
+      "category": "尺寸/重量\n单位：mm",
+      "standard": "3.  7.1±0.2",
+      "tool": "卡尺",
+      "sampleSize": "3件",
+      "frequency": "每批",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "3",
+            "num": 3
+          }
+        ],
+        "values": [
+          ".  7.1±0.2"
+        ],
+        "tolerances": [],
+        "fullText": "3.  7.1±0.2"
+      }
+    },
+    {
+      "seq": 3,
+      "category": "尺寸/重量\n单位：mm",
+      "standard": "4.  10±0.2",
+      "tool": "卡尺",
+      "sampleSize": "3件",
+      "frequency": "每批",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "4",
+            "num": 4
+          }
+        ],
+        "values": [
+          ".  10±0.2"
+        ],
+        "tolerances": [],
+        "fullText": "4.  10±0.2"
+      }
+    },
+    {
+      "seq": 3,
+      "category": "尺寸/重量\n单位：mm",
+      "standard": "5.  19.6±0.2",
+      "tool": "卡尺",
+      "sampleSize": "3件",
+      "frequency": "每批",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "5",
+            "num": 5
+          }
+        ],
+        "values": [
+          ".  19.6±0.2"
+        ],
+        "tolerances": [],
+        "fullText": "5.  19.6±0.2"
+      }
+    },
+    {
+      "seq": 3,
+      "category": "尺寸/重量\n单位：mm",
+      "standard": "6.  9.6±0.2",
+      "tool": "卡尺",
+      "sampleSize": "3件",
+      "frequency": "每批",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "6",
+            "num": 6
+          }
+        ],
+        "values": [
+          ".  9.6±0.2"
+        ],
+        "tolerances": [],
+        "fullText": "6.  9.6±0.2"
+      }
+    },
+    {
+      "seq": 3,
+      "category": "尺寸/重量\n单位：mm",
+      "standard": "7.  5±0.1",
+      "tool": "卡尺",
+      "sampleSize": "3件",
+      "frequency": "每批",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "7",
+            "num": 7
+          }
+        ],
+        "values": [
+          ".  5±0.1"
+        ],
+        "tolerances": [],
+        "fullText": "7.  5±0.1"
+      }
+    },
+    {
+      "seq": 4,
+      "category": "材料",
+      "standard": "材料为PU(黑色)，材料密度30±2kg/m3",
+      "tool": "核对供方材质报告",
+      "sampleSize": "1次",
+      "frequency": "每季度",
+      "controlMethod": "供方材质报告",
+      "reactionPlan": "",
+      "_imageRefs": [],
+      "_dimAnnotation": {
+        "markers": [],
+        "values": [
+          "30±2"
+        ],
+        "tolerances": [],
+        "fullText": "材料为PU(黑色)，材料密度30±2kg/m3"
+      }
+    },
+    {
+      "seq": 4,
+      "category": "材料",
+      "standard": "不干胶采用综研的产品（A-500）",
+      "tool": "核对供方材质报告",
+      "sampleSize": "1次",
+      "frequency": "",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [],
+      "_dimAnnotation": {
+        "markers": [],
+        "values": [],
+        "tolerances": [
+          "-500"
+        ],
+        "fullText": "不干胶采用综研的产品（A-500）"
+      }
+    },
+    {
+      "seq": 5,
+      "category": "性能",
+      "standard": "初粘性:室温下≥20#钢球，180° 剥离强度 (N/25mm)≥10,500gX8h位移量≤6mm;",
+      "tool": "核对供方年度型式报告",
+      "sampleSize": "1次",
+      "frequency": "每年",
+      "controlMethod": "供方年度型式报告",
+      "reactionPlan": "",
+      "_imageRefs": []
+    },
+    {
+      "seq": 5,
+      "category": "性能",
+      "standard": "拉伸强度≥130Pa，断裂伸长率≥120%;",
+      "tool": "核对供方年度型式报告",
+      "sampleSize": "1次",
+      "frequency": "",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": []
+    },
+    {
+      "seq": 5,
+      "category": "性能",
+      "standard": "耐温性能:-40℃-105℃，外观无变化",
+      "tool": "核对供方年度型式报告",
+      "sampleSize": "1次",
+      "frequency": "",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [],
+      "_dimAnnotation": {
+        "markers": [],
+        "values": [],
+        "tolerances": [
+          "-40",
+          "-105"
+        ],
+        "fullText": "耐温性能:-40℃-105℃，外观无变化"
+      }
+    },
+    {
+      "seq": 5,
+      "category": "性能",
+      "standard": "阻燃性满足GB 8410",
+      "tool": "核对供方年度型式报告",
+      "sampleSize": "1次",
+      "frequency": "",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": []
+    }
+  ],
+  "_allImages": []
+}

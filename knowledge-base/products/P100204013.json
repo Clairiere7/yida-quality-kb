@@ -1,0 +1,370 @@
+{
+  "productId": "P100204013",
+  "project": "",
+  "productName": "冷凝器芯体总成",
+  "importanceLevel": "重要部件",
+  "version": "A/0",
+  "preparedBy": "韩志伟",
+  "preparedDate": "2026.03.19",
+  "company": "仪达智能热管理科技（马鞍山)有限公司",
+  "documentNumber": "版本",
+  "inspectionType": "制程检验",
+  "sourceFile": "P100204013检规(1).xlsx",
+  "sourceSheet": "P100206002",
+  "totalCheckItems": 10,
+  "checkItems": [
+    {
+      "seq": 1,
+      "category": "外观",
+      "standard": "其它技术要求参照YD-JSBZ-118《汽车空调用冷凝器通用技术条件》。",
+      "tool": "目测",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "首检，巡检记录单",
+      "reactionPlan": "返工，隔离",
+      "_imageRefs": [],
+      "_dimAnnotation": {
+        "markers": [],
+        "values": [],
+        "tolerances": [
+          "-118"
+        ],
+        "fullText": "其它技术要求参照YD-JSBZ-118《汽车空调用冷凝器通用技术条件》。"
+      }
+    },
+    {
+      "seq": 2,
+      "category": "尺寸单位mm",
+      "standard": "320±1",
+      "tool": "高度尺",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_01.png",
+          "url": "/drawings/P100204013/drawing_01.png",
+          "num": 1
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "1",
+            "num": 1
+          }
+        ],
+        "values": [
+          "320±1"
+        ],
+        "tolerances": [],
+        "fullText": "1 320±1",
+        "partDesc": "段间距/段高度"
+      }
+    },
+    {
+      "seq": 3,
+      "category": "尺寸单位mm",
+      "standard": "320±1",
+      "tool": "高度尺",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_01.png",
+          "url": "/drawings/P100204013/drawing_01.png",
+          "num": 2
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "2",
+            "num": 2
+          }
+        ],
+        "values": [
+          "320±1"
+        ],
+        "tolerances": [],
+        "fullText": "2320±1",
+        "partDesc": "段间距/段高度"
+      }
+    },
+    {
+      "seq": 4,
+      "category": "尺寸单位mm",
+      "standard": "640±1.5",
+      "tool": "卷尺",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_01.png",
+          "url": "/drawings/P100204013/drawing_01.png",
+          "num": 3
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "3",
+            "num": 3
+          }
+        ],
+        "values": [
+          "640±1.5"
+        ],
+        "tolerances": [],
+        "fullText": "3 640±1.5",
+        "partDesc": "总长度/总高度"
+      }
+    },
+    {
+      "seq": 5,
+      "category": "尺寸单位mm",
+      "standard": "119.5±1",
+      "tool": "高度尺",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_01.png",
+          "url": "/drawings/P100204013/drawing_01.png",
+          "num": 4
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "4",
+            "num": 4
+          }
+        ],
+        "values": [
+          "119.5±1"
+        ],
+        "tolerances": [],
+        "fullText": "4 119.5±1",
+        "partDesc": "台阶高度/法兰高度"
+      }
+    },
+    {
+      "seq": 6,
+      "category": "尺寸单位mm",
+      "standard": "227±1",
+      "tool": "高度尺",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_01.png",
+          "url": "/drawings/P100204013/drawing_01.png",
+          "num": 5
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "5",
+            "num": 5
+          }
+        ],
+        "values": [
+          "227±1"
+        ],
+        "tolerances": [],
+        "fullText": "5227±1",
+        "partDesc": "台阶高度/法兰高度"
+      }
+    },
+    {
+      "seq": 7,
+      "category": "尺寸单位mm",
+      "standard": "373±1",
+      "tool": "高度尺",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_01.png",
+          "url": "/drawings/P100204013/drawing_01.png",
+          "num": 6
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "6",
+            "num": 6
+          }
+        ],
+        "values": [
+          "373±1"
+        ],
+        "tolerances": [],
+        "fullText": "6373±1",
+        "partDesc": "段间距/段高度"
+      }
+    },
+    {
+      "seq": 9,
+      "category": "尺寸单位mm",
+      "standard": "10.15+0.1\n        0",
+      "tool": "通止规",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_03.png",
+          "url": "/drawings/P100204013/drawing_03.png",
+          "num": 7
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "7",
+            "num": 7
+          }
+        ],
+        "values": [
+          "10.15+0.1\n        0"
+        ],
+        "tolerances": [
+          "+0.1"
+        ],
+        "fullText": "710.15+0.1\n        0",
+        "partDesc": "安装孔/销孔内径"
+      }
+    },
+    {
+      "seq": 10,
+      "category": "尺寸单位mm",
+      "standard": "15.5+0.1\n        0",
+      "tool": "通止规",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_03.png",
+          "url": "/drawings/P100204013/drawing_03.png",
+          "num": 8
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "8",
+            "num": 8
+          }
+        ],
+        "values": [
+          "15.5+0.1\n        0"
+        ],
+        "tolerances": [
+          "+0.1"
+        ],
+        "fullText": "815.5+0.1\n        0",
+        "partDesc": "槽/孔内径"
+      }
+    },
+    {
+      "seq": 11,
+      "category": "尺寸单位mm",
+      "standard": "对角线≤5mm",
+      "tool": "卷尺",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_02.png",
+          "url": "/drawings/P100204013/drawing_02.png",
+          "num": 9
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "9",
+            "num": 9
+          }
+        ],
+        "values": [],
+        "tolerances": [],
+        "fullText": "对角线≤5mm",
+        "partDesc": "对角线偏差"
+      }
+    }
+  ],
+  "_allImages": [
+    {
+      "name": "drawing_01.png",
+      "url": "/drawings/P100204013/drawing_01.png",
+      "num": 1
+    },
+    {
+      "name": "drawing_03.png",
+      "url": "/drawings/P100204013/drawing_03.png",
+      "num": 7
+    },
+    {
+      "name": "drawing_02.png",
+      "url": "/drawings/P100204013/drawing_02.png",
+      "num": 9
+    },
+    {
+      "name": "tech_req_01.png",
+      "url": "/drawings/P100204013/tech_req_01.png",
+      "num": 99,
+      "isTechReq": true
+    },
+    {
+      "name": "tech_req_02.png",
+      "url": "/drawings/P100204013/tech_req_02.png",
+      "num": 99,
+      "isTechReq": true
+    },
+    {
+      "name": "tech_req_03.png",
+      "url": "/drawings/P100204013/tech_req_03.png",
+      "num": 99,
+      "isTechReq": true
+    },
+    {
+      "name": "tech_req_04.png",
+      "url": "/drawings/P100204013/tech_req_04.png",
+      "num": 99,
+      "isTechReq": true
+    }
+  ],
+  "_techSpecs": [
+    {
+      "seq": 1,
+      "category": "外观",
+      "standard": "其它技术要求参照YD-JSBZ-118《汽车空调用冷凝器通用技术条件》。",
+      "tool": "目测",
+      "frequency": "2小时/次",
+      "controlMethod": "首检，巡检记录单",
+      "reactionPlan": "返工，隔离"
+    }
+  ],
+  "_techSpecsSource": "ocr"
+}

@@ -1,0 +1,76 @@
+{
+  "productId": "P100206001",
+  "productName": "冷凝器芯体",
+  "source": "CAD图纸技术要求栏 OCR识别",
+  "sections": [
+    {
+      "title": "通用技术要求",
+      "items": [
+        {
+          "label": "参照标准",
+          "value": "YD-JSBZ-118《汽车空调用冷凝器通用技术条件》"
+        }
+      ]
+    },
+    {
+      "title": "性能试验",
+      "items": [
+        {
+          "label": "气密性试验",
+          "value": "3.3MPa（氦检漏），保持3min无泄漏",
+          "tool": "氦检漏仪"
+        },
+        {
+          "label": "耐压性能",
+          "value": "1.64±0.05MPa（气压），氦检漏5级"
+        },
+        {
+          "label": "清洁度",
+          "value": "残留物≤5±1mg/件"
+        },
+        {
+          "label": "振动试验",
+          "value": "按SD/IEC 15415-2011标准执行"
+        },
+        {
+          "label": "盐雾试验",
+          "value": "按GB/T 10125-2021标准，48h无红锈"
+        }
+      ]
+    },
+    {
+      "title": "标识与标志",
+      "items": [
+        {
+          "label": "产品标识",
+          "value": "标签按HHP348标签规范执行，标签尺寸12mm×12mm"
+        },
+        {
+          "label": "外包装标识",
+          "value": "按GB/T 1804-C级标准"
+        }
+      ]
+    },
+    {
+      "title": "引用标准",
+      "items": [
+        {
+          "label": "通用技术条件",
+          "value": "YD-JSBZ-118"
+        },
+        {
+          "label": "禁限用物质",
+          "value": "GB/T 30512"
+        },
+        {
+          "label": "盐雾试验",
+          "value": "GB/T 10125"
+        },
+        {
+          "label": "尺寸公差",
+          "value": "GB/T 1804-C"
+        }
+      ]
+    }
+  ]
+}

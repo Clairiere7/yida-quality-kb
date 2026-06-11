@@ -1,0 +1,181 @@
+{
+  "productId": "P100204006",
+  "project": "",
+  "productName": "翅片",
+  "importanceLevel": "重要部件",
+  "version": "A/0",
+  "preparedBy": "夏国平",
+  "preparedDate": "2026-01-31",
+  "company": "仪达智能热管理科技（马鞍山）有限公司",
+  "documentNumber": "WI080701-204-5949",
+  "inspectionType": "制程检验",
+  "sourceFile": "P100204013检规(1).xlsx",
+  "sourceSheet": "P100206006翅片",
+  "totalCheckItems": 5,
+  "checkItems": [
+    {
+      "seq": 1,
+      "category": "外观",
+      "standard": "翅片百叶窗开口按图示，尺寸精度由模具保证，百叶窗应完全切开，不允许有局部黏连，窗口边缘应光滑，无毛刺，不允许有变形影响客气流通的其它缺陷；",
+      "tool": "目测",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "首检，巡检记录单",
+      "reactionPlan": "返工，隔离",
+      "_imageRefs": []
+    },
+    {
+      "seq": 2,
+      "category": "尺寸单位mm",
+      "standard": "669.2±2.8",
+      "tool": "卷尺",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_01.png",
+          "url": "/drawings/P100204006/drawing_01.png",
+          "num": 1
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "1",
+            "num": 1
+          }
+        ],
+        "values": [
+          "669.2±2.8"
+        ],
+        "tolerances": [],
+        "fullText": "1 669.2±2.8"
+      }
+    },
+    {
+      "seq": 3,
+      "category": "尺寸单位mm",
+      "standard": "32°±2°",
+      "tool": "散热带检查仪",
+      "sampleSize": "1件",
+      "frequency": "每批/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_01.png",
+          "url": "/drawings/P100204006/drawing_01.png",
+          "num": 2
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "2",
+            "num": 2
+          }
+        ],
+        "values": [
+          "32°±2°"
+        ],
+        "tolerances": [],
+        "fullText": "232°±2°"
+      }
+    },
+    {
+      "seq": 4,
+      "category": "尺寸单位mm",
+      "standard": "8+0.06\n   +0.02",
+      "tool": "公法线千分尺",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_02.png",
+          "url": "/drawings/P100204006/drawing_02.png",
+          "num": 3
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "3",
+            "num": 3
+          }
+        ],
+        "values": [
+          "8+0.06\n   +0.02"
+        ],
+        "tolerances": [
+          "+0.06",
+          "+0.02"
+        ],
+        "fullText": "38+0.06\n   +0.02"
+      }
+    },
+    {
+      "seq": 5,
+      "category": "尺寸单位mm",
+      "standard": "2.8",
+      "tool": "散热带检查仪",
+      "sampleSize": "1件",
+      "frequency": "2小时/次",
+      "controlMethod": "",
+      "reactionPlan": "",
+      "_imageRefs": [
+        {
+          "name": "drawing_02.png",
+          "url": "/drawings/P100204006/drawing_02.png",
+          "num": 4
+        }
+      ],
+      "_dimAnnotation": {
+        "markers": [
+          {
+            "symbol": "4",
+            "num": 4
+          }
+        ],
+        "values": [
+          "2.8"
+        ],
+        "tolerances": [],
+        "fullText": "42.8"
+      }
+    }
+  ],
+  "_allImages": [
+    {
+      "name": "drawing_01.png",
+      "url": "/drawings/P100204006/drawing_01.png",
+      "num": 1
+    },
+    {
+      "name": "drawing_02.png",
+      "url": "/drawings/P100204006/drawing_02.png",
+      "num": 3
+    },
+    {
+      "name": "tech_req_01.png",
+      "url": "/drawings/P100204006/tech_req_01.png",
+      "num": 99,
+      "isTechReq": true
+    },
+    {
+      "name": "tech_req_02.png",
+      "url": "/drawings/P100204006/tech_req_02.png",
+      "num": 99,
+      "isTechReq": true
+    },
+    {
+      "name": "tech_req_03.png",
+      "url": "/drawings/P100204006/tech_req_03.png",
+      "num": 99,
+      "isTechReq": true
+    }
+  ]
+}

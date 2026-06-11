@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "username": "质检员小王",
+      "password": "$2a$10$a0OjC1ewXNCoLBCD.usip.Ej9meVfY.n8pu15hdPA5R2bpsqtgMci",
+      "role": "inspector",
+      "displayName": "小王（质检员）",
+      "permissions": [
+        "products:read",
+        "products:search",
+        "qa:ask"
+      ]
+    },
+    {
+      "username": "采购小李",
+      "password": "$2a$10$SXDGwM0RYUYGCxsuSgV.SeDRuLX8CpibsP4AjB6IFwIYkkSFe1C8C",
+      "role": "purchaser",
+      "displayName": "小李（采购）",
+      "permissions": [
+        "products:read",
+        "products:search",
+        "qa:ask",
+        "contracts:purchase:read"
+      ]
+    },
+    {
+      "username": "销售小张",
+      "password": "$2a$10$KnOr.R3WsKetqGGI4lDKxujX9taUjxjQsW444S4j7h2kQUppISuQa",
+      "role": "sales",
+      "displayName": "小张（销售）",
+      "permissions": [
+        "products:read",
+        "products:search",
+        "qa:ask",
+        "contracts:sales:read"
+      ]
+    },
+    {
+      "username": "管理员",
+      "password": "$2a$10$rxkr4f65agfBb7n9IxwzZ.az0fRLzYA8HCF7paOSjhYP/g6e29TCG",
+      "role": "admin",
+      "displayName": "系统管理员",
+      "permissions": [
+        "*"
+      ]
+    }
+  ]
+}

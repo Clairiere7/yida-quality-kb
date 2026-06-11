@@ -1,0 +1,67 @@
+{
+  "generatedAt": "2026-06-09T05:13:25.547Z",
+  "totalProducts": 6,
+  "totalCheckItems": 66,
+  "products": [
+    {
+      "id": "DS122-11615",
+      "productId": "DS122 11615",
+      "project": "",
+      "productName": "吹脚风门板海绵1",
+      "importanceLevel": "一般部件",
+      "inspectionType": "进料检验",
+      "company": "马鞍山仪达空调有限公司",
+      "totalCheckItems": 15
+    },
+    {
+      "id": "P100206001",
+      "productId": "P100206001",
+      "project": "",
+      "productName": "冷凝器芯体",
+      "importanceLevel": "重要部件",
+      "inspectionType": "制程检验",
+      "company": "仪达智能热管理科技（马鞍山)有限公司",
+      "totalCheckItems": 12
+    },
+    {
+      "id": "P100204013",
+      "productId": "P100204013",
+      "project": "",
+      "productName": "冷凝器芯体总成",
+      "importanceLevel": "重要部件",
+      "inspectionType": "制程检验",
+      "company": "仪达智能热管理科技（马鞍山)有限公司",
+      "totalCheckItems": 10
+    },
+    {
+      "id": "P100206003",
+      "productId": "P100206003",
+      "project": "",
+      "productName": "集流管",
+      "importanceLevel": "重要部件",
+      "inspectionType": "制程检验",
+      "company": "仪达智能热管理科技（马鞍山)有限公司",
+      "totalCheckItems": 12
+    },
+    {
+      "id": "P100206004",
+      "productId": "P100206004",
+      "project": "",
+      "productName": "集流管",
+      "importanceLevel": "重要部件",
+      "inspectionType": "制程检验",
+      "company": "仪达智能热管理科技（马鞍山)有限公司",
+      "totalCheckItems": 12
+    },
+    {
+      "id": "P100204006",
+      "productId": "P100204006",
+      "project": "",
+      "productName": "翅片",
+      "importanceLevel": "重要部件",
+      "inspectionType": "制程检验",
+      "company": "仪达智能热管理科技（马鞍山）有限公司",
+      "totalCheckItems": 5
+    }
+  ]
+}

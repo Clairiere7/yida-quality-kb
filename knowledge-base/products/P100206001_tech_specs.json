@@ -1,0 +1,15 @@
+{
+  "productId": "P100206001",
+  "source": "excel_extraction",
+  "techSpecs": [
+    {
+      "seq": 1,
+      "category": "外观",
+      "standard": "其它技术要求参照YD-JSBZ-118《汽车空调用冷凝器通用技术条件》。",
+      "tool": "目测",
+      "frequency": "2小时/次",
+      "controlMethod": "首检，巡检记录单",
+      "reactionPlan": "返工，隔离"
+    }
+  ]
+}

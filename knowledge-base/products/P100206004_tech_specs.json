@@ -1,0 +1,15 @@
+{
+  "productId": "P100206004",
+  "source": "excel_extraction",
+  "techSpecs": [
+    {
+      "seq": 1,
+      "category": "外观",
+      "standard": "1.集流管扁管插槽翻边处无裂痕；且成形面光滑，表面清洁无油污；",
+      "tool": "目测",
+      "frequency": "2小时/次",
+      "controlMethod": "首检，巡检记录单",
+      "reactionPlan": "返工，隔离"
+    }
+  ]
+}

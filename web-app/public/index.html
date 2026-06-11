@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仪达质检知识库</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   仪达质检知识库 — 汽车空调零件质量规范检查 UI
+   设计语言：工业精准 · 制造业标准 · 高对比可读性
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* 品牌 — 工业深蓝 */
+  --pri:#1e4d8c;--pri-dark:#163a6b;--pri-light:#3b82f6;--pri-bg:#eff6ff;
+  /* 表面 */
+  --bg:#f4f6f9;--card:#fff;--card2:#f8fafc;
+  /* 文字 */
+  --txt:#0f172a;--txt2:#334155;--muted:#64748b;--placeholder:#94a3b8;
+  /* 边框 */
+  --border:#e2e8f0;--border2:#cbd5e1;
+  /* 质检状态色 — 制造业标准 */
+  --pass:#0d9488;--pass-bg:#ccfbf1;
+  --warn:#d97706;--warn-bg:#fffbeb;
+  --fail:#dc2626;--fail-bg:#fef2f2;
+  --info:#2563eb;--info-bg:#eff6ff;
+  /* 部件等级 */
+  --lvl-safety:#b91c1c;--lvl-safety-bg:#fee2e2;
+  --lvl-important:#c2410c;--lvl-important-bg:#ffedd5;
+  --lvl-general:#4338ca;--lvl-general-bg:#e0e7ff;
+  /* 布局 */
+  --side-w:260px;--radius:12px;--radius-sm:8px;--radius-lg:16px;
+  /* 阴影 */
+  --shadow-xs:0 1px 2px rgba(0,0,0,.03);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.05),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.06),0 2px 4px rgba(0,0,0,.03);
+  --shadow-lg:0 12px 32px rgba(0,0,0,.08),0 4px 8px rgba(0,0,0,.04);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body {
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif;
+  background:var(--bg);color:var(--txt);min-height:100vh;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
+}
+
+/* ═══ Login Page ═══ */
+.login-wrap {
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;
+  background:radial-gradient(ellipse at 25% 30%,rgba(30,77,140,.45) 0%,transparent 55%),
+             radial-gradient(ellipse at 75% 70%,rgba(37,99,235,.15) 0%,transparent 50%),
+             linear-gradient(165deg,#0a1b32 0%,#0f2b4f 40%,#193f6b 100%);
+  position:relative;overflow:hidden;
+}
+.login-wrap::before {
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.006) 2px,rgba(255,255,255,.006) 4px),
+                   repeating-linear-gradient(90deg,transparent,transparent 2px,rgba(255,255,255,.006) 2px,rgba(255,255,255,.006) 4px);
+}
+.login-card {
+  background:#fff;border-radius:20px;padding:48px 44px;
+  width:420px;max-width:92vw;box-shadow:0 25px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.06) inset;
+  position:relative;z-index:1;animation:cardIn .4s ease;
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+.login-card .logo-wrap{text-align:center;margin-bottom:28px}
+.login-card .logo-icon{
+  width:56px;height:56px;
+  background:linear-gradient(135deg,#1a3a63,#1e4d8c);
+  border-radius:16px;display:inline-flex;align-items:center;justify-content:center;
+  font-size:28px;margin-bottom:12px;box-shadow:0 6px 20px rgba(26,58,99,.3);
+}
+.login-card h1{font-size:24px;text-align:center;margin-bottom:4px;color:#0c1f3f;letter-spacing:-0.5px;font-weight:720}
+.login-card .sub{color:var(--muted);text-align:center;margin-bottom:32px;font-size:13px}
+
+.login-card .field-group{margin-bottom:16px}
+.login-card .field-group label{
+  display:block;font-size:11px;font-weight:650;color:var(--txt2);
+  margin-bottom:4px;text-transform:uppercase;letter-spacing:.4px;
+}
+.login-card input{
+  width:100%;padding:13px 16px;border:1.5px solid var(--border);
+  border-radius:10px;font-size:15px;margin-bottom:14px;outline:none;
+  transition:border .2s,box-shadow .2s;background:var(--card2);color:var(--txt);
+}
+.login-card input:focus{border-color:var(--pri);box-shadow:0 0 0 3px rgba(37,99,235,.12);background:#fff}
+.login-card button{
+  width:100%;padding:13px;background:linear-gradient(135deg,#1a3a63,var(--pri));
+  color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer;
+  font-weight:600;transition:all .2s;letter-spacing:.3px;
+}
+.login-card button:hover{box-shadow:0 4px 20px rgba(30,77,140,.35);transform:translateY(-1px)}
+.login-card button:active{transform:translateY(0)}
+.login-err{color:var(--fail);font-size:13px;text-align:center;margin-top:10px;display:none;padding:8px 12px;background:var(--fail-bg);border-radius:6px}
+.login-hint{color:var(--muted);font-size:11px;margin-top:24px;text-align:center;line-height:2.2;border-top:1px solid var(--border);padding-top:16px}
+
+/* ═══ Layout ═══ */
+.layout{display:flex;min-height:100vh}
+
+/* ═══ Sidebar ═══ */
+.sidebar{
+  width:var(--side-w);background:linear-gradient(175deg,#0a1b32 0%,#0f2544 40%,#132d52 100%);
+  color:#fff;position:fixed;top:0;left:0;bottom:0;z-index:100;
+  display:flex;flex-direction:column;box-shadow:2px 0 24px rgba(0,0,0,.25);
+}
+.side-hd{padding:24px 22px;border-bottom:1px solid rgba(255,255,255,.06)}
+.side-hd h2{font-size:20px;font-weight:700;letter-spacing:-0.3px}
+.side-hd small{opacity:.35;font-size:12px;display:block;margin-top:4px}
+.side-nav{flex:1;padding:12px 0}
+.side-nav .nv{
+  display:flex;align-items:center;gap:10px;width:100%;
+  padding:13px 22px;color:rgba(255,255,255,.5);background:none;
+  border:none;text-align:left;font-size:14px;cursor:pointer;
+  border-left:3px solid transparent;transition:all .15s;font-weight:450;font-family:inherit;
+}
+.side-nav .nv:hover{background:rgba(255,255,255,.04);color:rgba(255,255,255,.85)}
+.side-nav .nv.on{background:rgba(59,130,246,.2);color:#fff;border-left-color:#3b82f6;font-weight:600}
+.side-user{padding:18px 22px;border-top:1px solid rgba(255,255,255,.06);font-size:13px}
+
+/* Role badges */
+.rb{display:inline-block;padding:3px 10px;border-radius:10px;font-size:10px;font-weight:700;margin-top:6px;letter-spacing:.3px}
+.rb-a{background:rgba(124,58,237,.45);color:#c4b5fd}
+.rb-i{background:rgba(13,148,136,.4);color:#5eead4}
+.rb-p{background:rgba(217,119,6,.4);color:#fcd34d}
+.rb-s{background:rgba(37,99,235,.4);color:#93c5fd}
+.lbtn{display:block;margin-top:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.45);padding:6px 16px;border-radius:8px;cursor:pointer;font-size:11px;transition:all .15s;font-family:inherit}
+.lbtn:hover{background:rgba(255,255,255,.08);color:#fff}
+
+/* ═══ Main Content ═══ */
+.main{margin-left:var(--side-w);flex:1;padding:32px 36px;max-width:1440px;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ═══ Dashboard Stats ═══ */
+.sr{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:16px;margin-bottom:28px}
+.sc{
+  background:var(--card);border-radius:var(--radius-lg);
+  padding:20px 24px;border:1px solid var(--border);display:flex;
+  align-items:center;gap:16px;box-shadow:var(--shadow-xs);
+  transition:all .2s;position:relative;overflow:hidden;
+}
+.sc:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);border-color:var(--pri-bg)}
+.sc .stat-icon{font-size:32px;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:14px;flex-shrink:0}
+.sc .stat-icon.ik-products{background:#dbeafe}.sc .stat-icon.ik-items{background:#d1fae5}
+.sc .stat-icon.ik-critical{background:#fee2e2}.sc .stat-icon.ik-date{background:#f1f5f9}
+.sn{font-size:32px;font-weight:800;line-height:1;letter-spacing:-1px;color:var(--txt)}
+.sl{font-size:12px;color:var(--muted);margin-top:4px;font-weight:500}
+
+/* ═══ Section / Cards ═══ */
+.sh{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:20px;
+  box-shadow:var(--shadow-sm);
+}
+.sh h3{font-size:16px;margin-bottom:4px;font-weight:700;letter-spacing:-.3px}
+.sr2{display:flex;gap:10px;margin-top:10px}
+.sr2 input{flex:1;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;outline:none;transition:border .2s,box-shadow .2s;background:var(--bg);color:var(--txt);font-family:inherit}
+.sr2 input:focus{border-color:var(--pri);box-shadow:0 0 0 3px rgba(37,99,235,.1);background:var(--card)}
+.sr2 button{padding:12px 24px;background:linear-gradient(135deg,var(--pri),var(--pri-dark));color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-size:14px;font-family:inherit;transition:all .2s}
+.sr2 button:hover{box-shadow:0 4px 14px rgba(30,77,140,.3);transform:translateY(-1px)}
+
+/* ═══ Product Grid ═══ */
+.sdh{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px}
+.sdh h3{font-size:19px;font-weight:700;letter-spacing:-.3px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+
+.pcard{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:20px 24px;cursor:pointer;
+  transition:all .2s;box-shadow:var(--shadow-xs);position:relative;
+}
+.pcard:hover{box-shadow:var(--shadow-lg);border-color:var(--pri-light);transform:translateY(-2px)}
+.pcard:active{transform:translateY(0)}
+.pcard h4{font-size:16px;margin-bottom:5px;font-weight:650;color:var(--txt);line-height:1.35}
+.pcid{font-size:12px;color:var(--muted);font-family:'SF Mono','Cascadia Code','Consolas',monospace;margin-bottom:10px}
+.ptags{display:flex;gap:6px;flex-wrap:wrap}
+
+/* ═══ Tags ═══ */
+.tag{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.2px;display:inline-flex;align-items:center;gap:3px}
+.ti{background:var(--lvl-important-bg);color:var(--lvl-important);border:1px solid rgba(194,65,12,.18)}
+.tg{background:var(--lvl-general-bg);color:var(--lvl-general);border:1px solid rgba(67,56,202,.18)}
+.ts{background:var(--lvl-safety-bg);color:var(--lvl-safety);border:1px solid rgba(185,28,28,.18)}
+.tq{background:#d1fae5;color:#065f46;border:1px solid rgba(6,95,70,.15)}
+.tp{background:#dbeafe;color:#1e40af;border:1px solid rgba(30,64,175,.15)}
+.tc{background:var(--card2);color:var(--muted);font-family:'SF Mono','Cascadia Code','Consolas',monospace}
+
+/* ═══ Back Button ═══ */
+.br{margin-bottom:14px}
+.bb{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1.5px solid var(--border);padding:8px 18px;border-radius:8px;cursor:pointer;font-size:13px;color:var(--muted);font-weight:500;font-family:inherit;transition:all .15s}
+.bb:hover{border-color:var(--pri-light);color:var(--pri);background:var(--pri-bg)}
+
+/* ═══ Detail Header ═══ */
+.dh{border-bottom:1.5px solid var(--border);padding-bottom:16px;margin-bottom:20px}
+.dh h2{font-size:26px;margin-bottom:6px;font-weight:720;letter-spacing:-.5px;color:var(--txt)}
+.di{display:flex;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.di span{padding:5px 12px;background:var(--card2);border-radius:8px;font-weight:500;border:1px solid var(--border)}
+
+/* ═══ Inspection Table ═══ */
+.tw{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow-sm);margin-bottom:14px;
+}
+.tw table{width:100%;border-collapse:collapse;font-size:13px}
+.tw th{
+  background:#f1f5f9;padding:12px 14px;text-align:left;
+  font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.5px;border-bottom:2px solid var(--border);white-space:nowrap;
+  position:sticky;top:0;z-index:2;
+}
+.tw td{padding:10px 14px;border-bottom:1px solid #f1f5f9;vertical-align:top;line-height:1.55;color:var(--txt)}
+.tw tbody tr{transition:background .15s}
+.tw tbody tr:nth-child(even){background:#fafbfd}
+.tw tbody tr:hover td{background:#eff6ff}
+.tw .cs{width:48px;text-align:center;color:var(--muted);font-weight:700;font-family:'SF Mono','Cascadia Code','Consolas',monospace;font-size:12px}
+
+/* ═══ Dimension Bubbles ═══ */
+.db{display:inline-flex;align-items:center;gap:5px;background:#fffbeb;border:1.5px solid #fcd34d;border-radius:18px;padding:5px 13px;margin:3px 6px 3px 0;font-size:11px;font-weight:650;color:#92400e;cursor:pointer;transition:all .15s}
+.db:hover{box-shadow:0 2px 12px rgba(245,158,11,.2);background:#fef3c7}
+.db .ds{font-size:15px;font-weight:800}
+.db .dp{font-size:10px;color:#92400e;background:rgba(255,255,255,.7);padding:1px 6px;border-radius:4px}
+.db .dv{font-family:'SF Mono','Cascadia Code','Consolas',monospace;background:rgba(255,255,255,.8);padding:1px 7px;border-radius:5px}
+
+/* ═══ Image Badges ═══ */
+.ib{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:#eff6ff;border-radius:14px;font-size:10px;color:var(--pri);cursor:pointer;margin:2px 5px;font-weight:550;transition:all .15s}
+.ib:hover{background:var(--pri);color:#fff}
+
+/* ═══ Tech Specs ═══ */
+.tp3{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:20px;
+  box-shadow:var(--shadow-xs);
+}
+.tp3 h3{font-size:16px;margin-bottom:12px;font-weight:700;letter-spacing:-.3px}
+.ts-sec{margin-bottom:12px}
+.ts-sec-title{font-size:12px;font-weight:700;color:var(--pri);margin-bottom:8px;padding:4px 12px;background:var(--pri-bg);border-radius:6px;display:inline-block}
+.ts-row{display:flex;align-items:flex-start;gap:14px;padding:6px 12px;border-bottom:1px solid #f8fafc;font-size:13px}
+.ts-label{font-weight:650;color:var(--muted);min-width:110px;flex-shrink:0}
+.ts-value{flex:1;color:var(--txt)}
+.ts-tool{font-size:11px;color:var(--pri);background:var(--pri-bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+
+/* ═══ Drawings ═══ */
+.ds2{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:20px 24px;margin-top:16px;
+  box-shadow:var(--shadow-sm);
+}
+.dcat{margin-top:12px}
+.dcat h4{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:8px;letter-spacing:-.2px}
+.dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:8px}
+.dc{position:relative;border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;background:#fff;transition:all .2s}
+.dc:hover{border-color:var(--pri-light);box-shadow:0 4px 18px rgba(0,0,0,.08);transform:translateY(-1px)}
+.dc img{width:100%;height:120px;object-fit:contain;background:#fafbfc;display:block}
+.dc .dn{font-size:11px;color:var(--muted);padding:5px 10px;text-align:center;font-weight:500;background:#f8fafc;border-top:1px solid var(--border)}
+.dd{position:absolute;top:4px;right:4px;width:22px;height:22px;background:rgba(239,68,68,.9);color:#fff;border-radius:50%;font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;opacity:0;transition:opacity .15s}
+.dc:hover .dd{opacity:1}
+
+/* ═══ Lightbox ═══ */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(8px);animation:fadeIn .2s ease}
+.lb img{max-width:95vw;max-height:95vh;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+
+/* ═══ QA Panel ═══ */
+.qp{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:20px 24px;box-shadow:var(--shadow-sm);
+}
+.qs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.qs span{padding:6px 16px;background:var(--card2);border:1.5px solid var(--border);border-radius:22px;font-size:12px;cursor:pointer;color:var(--muted);font-weight:500;font-family:inherit;transition:all .15s}
+.qs span:hover{background:var(--pri-bg);border-color:var(--pri);color:var(--pri)}
+.qr2{display:flex;gap:10px;margin-bottom:16px}
+.qr2 textarea{flex:1;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;min-height:56px;outline:none;font-family:inherit;resize:vertical;transition:border .2s,box-shadow .2s;background:var(--bg);color:var(--txt)}
+.qr2 textarea:focus{border-color:var(--pri);box-shadow:0 0 0 3px rgba(37,99,235,.1);background:var(--card)}
+.qr2 button{padding:11px 24px;background:linear-gradient(135deg,var(--pri),var(--pri-dark));color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-size:14px;align-self:flex-end;font-family:inherit;transition:all .2s}
+.qr2 button:hover{box-shadow:0 4px 14px rgba(30,77,140,.3)}
+.qa{display:none;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;line-height:1.75;font-size:14px;white-space:pre-wrap;max-height:60vh;overflow-y:auto}
+
+.mt{display:inline-block;padding:3px 14px;border-radius:14px;font-size:11px;font-weight:700;margin-bottom:12px;letter-spacing:.3px}
+.mai{background:var(--info-bg);color:var(--info)}
+.mof{background:var(--warn-bg);color:var(--warn)}
+
+/* ═══ Placeholder / Empty ═══ */
+.ph{text-align:center;padding:32px 20px;color:var(--muted);font-size:14px}
+.emp{padding:32px;text-align:center;color:var(--muted);background:var(--card2);border-radius:10px;border:2px dashed var(--border);font-size:14px}
+
+/* ═══ Toast ═══ */
+.toast{position:fixed;top:20px;right:20px;padding:12px 20px;border-radius:10px;color:#fff;font-size:13px;z-index:9999;background:var(--fail);animation:toastIn .3s ease;font-weight:500;box-shadow:0 4px 20px rgba(239,68,68,.4);max-width:380px}
+@keyframes toastIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* ═══ Dropzone ═══ */
+.dropzone{cursor:pointer;transition:all .2s;font-family:inherit}
+
+/* ═══ Scrollbar ═══ */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--muted)}
+.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1)}
+
+/* ═══ Responsive ═══ */
+@media (max-width:900px){
+  .sidebar{width:220px}
+  .main{margin-left:220px;padding:20px}
+  .grid{grid-template-columns:1fr}
+  .sr{grid-template-columns:repeat(2,1fr)}
+  .dh h2{font-size:22px}
+}
+@media (max-width:640px){
+  .sidebar{width:100%;position:relative;height:auto}
+  .main{margin-left:0}
+  .grid{grid-template-columns:1fr}
+  .sr{grid-template-columns:1fr}
+  .sr2{flex-direction:column}
+  .qr2{flex-direction:column}
+  .dg{grid-template-columns:repeat(2,1fr)}
+  .login-card{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* ========== 认证模块 ========== */
+var Auth = {
+  token: function(){ return localStorage.getItem('kt'); },
+  user: function(){ try { return JSON.parse(localStorage.getItem('ku')||'null'); } catch(e) { return null; } },
+  ok: function(){ return !!this.token(); },
+  login: async function(u, p) {
+    var r = await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
+    var d = await r.json();
+    if (!r.ok) throw new Error(d.error||'登录失败');
+    localStorage.setItem('kt',d.token);
+    localStorage.setItem('ku',JSON.stringify(d.user));
+    return d.user;
+  },
+  logout: function(){ localStorage.removeItem('kt'); localStorage.removeItem('ku'); location.href = '/'; },
+  get: async function(url, opts) {
+    var t = this.token();
+    if (!t) { this.logout(); throw new Error('未登录'); }
+    opts = opts || {};
+    var h = Object.assign({}, opts.headers, {Authorization:'Bearer '+t});
+    if (opts.body) h['Content-Type'] = 'application/json';
+    var r = await fetch(url, Object.assign({}, opts, {headers:h}));
+    if (r.status === 401) { this.logout(); throw new Error('登录已过期'); }
+    var d = await r.json();
+    if (!r.ok) throw new Error(d.error||'请求失败');
+    return d;
+  }
+};
+
+var RL = {admin:'管理员',inspector:'质检员',purchaser:'采购',sales:'销售'};
+
+/* ========== 应用模块 ========== */
+var App = {
+  user: null,
+  products: [],
+  view: 'dashboard',
+  backTo: 'dashboard',
+
+  init: function() {
+    if (!Auth.ok()) { location.href = '/'; return; }
+    this.user = Auth.user();
+    this.render();
+    this.showDashboard();
+  },
+
+  render: function() {
+    var nav = [{id:'dashboard',label:'首页',icon:'🏠'}];
+    if (this.can('products:read')) { nav.push({id:'products',label:'产品检规',icon:'📋'}); nav.push({id:'search',label:'智能搜索',icon:'🔍'}); }
+    if (this.can('qa:ask')) nav.push({id:'qa',label:'AI问答',icon:'💬'});
+    if (this.can('contracts:purchase:read')) nav.push({id:'purchase',label:'采购合同',icon:'📑'});
+    if (this.can('contracts:sales:read')) nav.push({id:'sales',label:'销售合同',icon:'📑'});
+    var h = '<div class="layout"><aside class="sidebar"><div class="side-hd"><div style="display:flex;align-items:center;gap:12px"><div style="width:42px;height:42px;background:linear-gradient(135deg,rgba(59,130,246,.45),rgba(37,99,235,.25));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;border:1px solid rgba(255,255,255,.08)">🔬</div><div><h2>仪达质检知识库</h2><small>智能热管理科技(马鞍山)</small></div></div></div><nav class="side-nav">';
+    for (var i = 0; i < nav.length; i++) {
+      var n = nav[i];
+      h += '<button class="nv' + (n.id===this.view?' on':'') + '" onclick="App.go(\'' + n.id + '\')"><span>' + n.icon + '</span> ' + n.label + '</button>';
+    }
+    h += '</nav><div class="side-user"><div style="display:flex;align-items:center;gap:8px"><div style="width:28px;height:28px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px">👤</div><span style="font-size:13px;font-weight:500">' + this.user.displayName + '</span></div><span class="rb rb-' + this.user.role[0] + '">' + (RL[this.user.role]||'') + '</span><button class="lbtn" onclick="Auth.logout()">退出登录</button></div></aside><main class="main" id="main"></main></div>';
+    document.getElementById('app').innerHTML = h;
+  },
+
+  can: function(p) { return this.user.permissions.includes('*') || this.user.permissions.includes(p); },
+
+  go: function(v) {
+    this.view = v;
+    var bs = document.querySelectorAll('.nv');
+    for (var i = 0; i < bs.length; i++) bs[i].classList.remove('on');
+    var b = document.querySelector('.nv[onclick="App.go(\'' + v + '\')"]');
+    if (b) b.classList.add('on');
+    if (v==='dashboard') this.showDashboard();
+    else if (v==='products') this.showProducts();
+    else if (v==='search') this.showSearch();
+    else if (v==='qa') this.showQA();
+    else if (v==='purchase') this.showContracts('purchase');
+    else if (v==='sales') this.showContracts('sales');
+  },
+
+  showDashboard: function() {
+    var self = this;
+    Auth.get('/api/products').then(function(d) {
+      self.products = d.products || [];
+      var imp = self.products.filter(function(p) { return p.importanceLevel==='重要部件'||p.importanceLevel==='安全部件'; }).length;
+      var h = '<div class="page-header" style="margin-bottom:24px"><h2 style="font-size:26px;font-weight:720;color:#0a1b32;letter-spacing:-.5px">📊 质检知识库总览</h2><div style="font-size:13px;color:var(--muted);margin-top:4px">汽车空调零件质量规范检查 · 仪表板总览</div></div>';
+      h += '<div class="sr">';
+      h += '<div class="sc"><div class="stat-icon ik-products">📦</div><div><div class="sn">' + (d.total||0) + '</div><div class="sl">产品总数</div><div style="font-size:10px;color:var(--muted);margin-top:1px">全部在库产品</div></div></div>';
+      h += '<div class="sc"><div class="stat-icon ik-items">✅</div><div><div class="sn">' + (d.totalCheckItems||0) + '</div><div class="sl">检验项目</div><div style="font-size:10px;color:var(--muted);margin-top:1px">质量检测项总计</div></div></div>';
+      h += '<div class="sc"><div class="stat-icon ik-critical">⭐</div><div><div class="sn">' + imp + '</div><div class="sl">重要/安全部件</div><div style="font-size:10px;color:var(--muted);margin-top:1px">需重点管控零件</div></div></div>';
+      h += '<div class="sc"><div class="stat-icon ik-date">🔄</div><div><div class="sn" style="font-size:18px;letter-spacing:0">' + (d.generatedAt?new Date(d.generatedAt).toLocaleDateString('zh-CN'):'-') + '</div><div class="sl">数据更新日期</div><div style="font-size:10px;color:var(--muted);margin-top:1px">知识库最后同步</div></div></div>';
+      h += '</div>';
+      h += '<div class="sh"><h3>🔍 快速搜索</h3><div style="font-size:13px;color:var(--muted);margin-bottom:12px">输入产品编号、零件名称、尺寸公差值、材料牌号或标准号</div><div class="sr2"><input id="dq" placeholder="例如：DS122、冷凝器芯体、824±1.5、PU发泡料、GB 8410…" onkeydown="if(event.key===&quot;Enter&quot;)App.quickSearch()"><button onclick="App.quickSearch()">🔍 搜索</button></div><div style="margin-top:14px;display:flex;gap:18px"><a onclick="App.go(&quot;qa&quot;)" style="color:var(--pri);cursor:pointer;font-size:13px;font-weight:600">💬 AI智能问答 →</a><a onclick="App.go(&quot;products&quot;)" style="color:var(--pri);cursor:pointer;font-size:13px;font-weight:600">📋 全部产品检规 →</a></div></div>';
+      if (self.products.length > 0) {
+        h += '<div class="sdh"><h3>📋 产品概览</h3><span style="font-size:12px;color:var(--muted)">点击卡片查看详情</span></div><div class="grid">' + self.products.map(function(p) {
+          return '<div class="pcard" onclick="App.showDetail(&quot;' + p.id + '&quot;)"><h4>' + p.productName + '</h4><div class="pcid">#' + p.productId + '</div><div class="ptags"><span class="tag ' + (p.importanceLevel==='安全部件'?'ts':p.importanceLevel==='重要部件'?'ti':'tg') + '">' + p.importanceLevel + '</span><span class="tag ' + (p.inspectionType==='进料检验'?'tq':'tp') + '">' + p.inspectionType + '</span><span class="tag tc">' + p.totalCheckItems + ' 项</span></div></div>';
+        }).join('') + '</div>';
+      }
+      document.getElementById('main').innerHTML = h;
+    }).catch(function(e){ App.err(e.message); });
+  },
+
+  quickSearch: function() { var q = document.getElementById('dq').value.trim(); if (!q) return; this.go('search'); var self = this; setTimeout(function() { var inp = document.getElementById('sq'); if (inp) { inp.value = q; self.search(); } }, 150); },
+
+  showProducts: function(page, size) {
+    page = page || 1; size = size || 20;
+    var self = this;
+    Auth.get('/api/products').then(function(d) {
+      self.products = d.products || [];
+      var pages = Math.ceil(self.products.length / size);
+      var slice = self.products.slice((page-1)*size, page*size);
+      var pager = '';
+      if (pages > 1) {
+        pager = '<div style="margin-top:16px;display:flex;gap:6px;justify-content:center">';
+        for (var i = 1; i <= pages; i++) pager += '<button onclick="App.showProducts('+i+','+size+')" style="padding:7px 16px;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-family:inherit;' + (i===page?'background:var(--pri);color:#fff;font-weight:600':'background:var(--card);color:var(--txt)') + '">' + i + '</button>';
+        pager += '</div>';
+      }
+      var addBtn = self.can('*') ? '<button onclick="App.showAddProduct()" style="padding:9px 18px;background:var(--pri);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px;font-family:inherit">＋ 新增产品</button>' : '';
+      var h = '<div class="sdh"><h3>📋 产品检规列表（' + self.products.length + '个）</h3><div style="display:flex;gap:10px;align-items:center"><select onchange="App.filterLvl(this.value)" style="padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--card);color:var(--txt)"><option value="">全部等级</option><option value="安全部件">安全部件</option><option value="重要部件">重要部件</option><option value="一般部件">一般部件</option></select>' + addBtn + '</div></div><div class="grid">';
+      h += slice.map(function(p) {
+        return '<div class="pcard" onclick="App.showDetail(&quot;' + p.id + '&quot;)"><h4>' + p.productName + '</h4><div class="pcid">#' + p.productId + '</div><div class="ptags"><span class="tag ' + (p.importanceLevel==='安全部件'?'ts':p.importanceLevel==='重要部件'?'ti':'tg') + '">' + p.importanceLevel + '</span><span class="tag ' + (p.inspectionType==='进料检验'?'tq':'tp') + '">' + p.inspectionType + '</span><span class="tag tc">' + p.totalCheckItems + ' 项</span></div></div>';
+      }).join('') + '</div>' + pager;
+      document.getElementById('main').innerHTML = h;
+    }).catch(function(e){ App.err(e.message); });
+  },
+
+  filterLvl: function(l) {
+    Auth.get('/api/products').then(function(d) {
+      App.products = (d.products||[]).filter(function(p) { return !l || p.importanceLevel===l; });
+      document.getElementById('main').innerHTML = '<div class="sdh"><h3>📋 产品检规列表（' + App.products.length + '个）</h3><select onchange="App.filterLvl(this.value)" style="padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--card);color:var(--txt)"><option value="">全部等级</option><option value="安全部件">安全部件</option><option value="重要部件">重要部件</option><option value="一般部件">一般部件</option></select></div><div class="grid">' + App.products.map(function(p) { return '<div class="pcard" onclick="App.showDetail(&quot;' + p.id + '&quot;)"><h4>' + p.productName + '</h4><div class="pcid">#' + p.productId + '</div><div class="ptags"><span class="tag ' + (p.importanceLevel==='安全部件'?'ts':p.importanceLevel==='重要部件'?'ti':'tg') + '">' + p.importanceLevel + '</span><span class="tag ' + (p.inspectionType==='进料检验'?'tq':'tp') + '">' + p.inspectionType + '</span><span class="tag tc">' + p.totalCheckItems + ' 项</span></div></div>'; }).join('') + '</div>';
+    });
+  },
+
+  showDetail: function(id) {
+    this.backTo = this.view;
+    var self = this;
+    Promise.all([
+      Auth.get('/api/products/' + id),
+      Auth.get('/api/products/' + id + '/drawings').catch(function() { return null; }),
+      Auth.get('/api/tech-specs/' + id).catch(function() { return null; })
+    ]).then(function(r) {
+      var p = r[0], dwg = r[1], ts = r[2];
+
+      var techHtml = '';
+      if (ts && ts.available && ts.sections) {
+        techHtml = '<div class="tp3"><h3>📋 技术要求</h3>';
+        ts.sections.forEach(function(s) {
+          techHtml += '<div class="ts-sec"><div class="ts-sec-title">' + s.title + '</div>';
+          s.items.forEach(function(it) {
+            techHtml += '<div class="ts-row"><span class="ts-label">' + it.label + '</span><span class="ts-value">' + it.value + '</span>' + (it.tool?'<span class="ts-tool">' + it.tool + '</span>':'') + '</div>';
+          });
+          techHtml += '</div>';
+        });
+        techHtml += '</div>';
+      }
+
+      var dwgHtml = '';
+      if (dwg && dwg.drawings && dwg.drawings.length > 0) {
+        var imgs = dwg.drawings.filter(function(d) { return d.isImage; });
+        var dimImgs = imgs.filter(function(d) { return d.type==='dim'; });
+        var bomImgs = imgs.filter(function(d) { return d.type==='bom'; });
+        var techImgs = imgs.filter(function(d) { return d.isTechReq; });
+        var otherImgs = imgs.filter(function(d) { return !d.type && !d.isTechReq; });
+        var allCats = [];
+        if (dimImgs.length > 0) { dimImgs.sort(function(a,b){ return parseInt((a.name.match(/\d+/g)||['0'])[0])-parseInt((b.name.match(/\d+/g)||['0'])[0]); }); allCats.push({cat:'📐 尺寸标注图（'+dimImgs.length+'张）',imgs:dimImgs}); }
+        if (bomImgs.length > 0) { allCats.push({cat:'📋 零件清单/BOM（'+bomImgs.length+'张）',imgs:bomImgs}); }
+        if (otherImgs.length > 0) { otherImgs.sort(function(a,b){ return parseInt((a.name.match(/\d+/g)||['0'])[0])-parseInt((b.name.match(/\d+/g)||['0'])[0]); }); allCats.push({cat:'📎 其他图纸（'+otherImgs.length+'张）',imgs:otherImgs}); }
+        if (techImgs.length > 0) { allCats.push({cat:'📄 技术要求附图（'+techImgs.length+'张）',imgs:techImgs}); }
+
+        for (var ci = 0; ci < allCats.length; ci++) {
+          var cat = allCats[ci];
+          dwgHtml += '<div class="dcat"><h4>' + cat.cat + '</h4><div class="dg">';
+          dwgHtml += cat.imgs.map(function(d) {
+            var lbl = d.label ? '<div class="dl">' + d.label + (d.markers?' ['+d.markers+']':'') + '</div>' : '';
+            return '<div class="dc" onclick="App.viewImg(\'' + d.url + '\')"><img src="' + d.url + '" loading="lazy"><span class="dd" onclick="event.stopPropagation();App.deleteDrawing(\'' + id + '\',\'' + encodeURIComponent(d.name) + '\')" title="删除图纸">✕</span>' + lbl + '<div class="dn">' + d.name.replace(/_annotated/g,'') + '</div></div>';
+          }).join('') + '</div></div>';
+        }
+        dwgHtml += '<div class="dropzone" id="dz-dwg" style="margin-top:16px;border:2px dashed var(--border);border-radius:10px;padding:18px;text-align:center;cursor:pointer;background:#fafbfc" ondragover="event.preventDefault();this.style.borderColor=\'var(--pri-light)\';this.style.background=\'#eff6ff\'" ondragleave="this.style.borderColor=\'var(--border)\';this.style.background=\'#fafbfc\'" ondrop="App.dropDrawing(event,\'' + id + '\')"><div style="font-size:22px">📤</div><div style="font-size:13px;color:var(--muted)">拖拽图纸到此处上传</div><div style="font-size:11px;color:var(--muted);margin-top:4px">支持 PNG / JPG / SVG / PDF</div><input type="file" id="fi-dwg" multiple accept=".png,.jpg,.jpeg,.gif,.bmp,.svg,.pdf" style="display:none" onchange="App.uploadDrawing(\'' + id + '\')"></div>';
+      } else {
+        dwgHtml = '<div class="ds2"><h3>📐 产品图纸</h3><div class="emp">暂无图纸 — 拖拽图片到下方区域上传</div><div class="dropzone" style="margin-top:16px;border:2px dashed var(--border);border-radius:10px;padding:24px;text-align:center;cursor:pointer;background:#fafbfc" ondragover="event.preventDefault();this.style.borderColor=\'var(--pri-light)\';this.style.background=\'#eff6ff\'" ondragleave="this.style.borderColor=\'var(--border)\';this.style.background=\'#fafbfc\'" ondrop="App.dropDrawing(event,\'' + id + '\')"><div style="font-size:22px">📤</div><div style="font-size:13px;color:var(--muted)">拖拽图纸到此处上传</div><div style="font-size:11px;color:var(--muted);margin-top:4px">支持 PNG / JPG / SVG / PDF</div><input type="file" id="fi-dwg" multiple accept=".png,.jpg,.jpeg,.gif,.bmp,.svg,.pdf" style="display:none" onchange="App.uploadDrawing(\'' + id + '\')"></div>';
+      }
+
+      var tableHtml = '<div class="tw"><table><thead><tr><th>#</th><th>项目</th><th>标准</th><th>工具</th><th>频次</th><th>容量</th><th>控制</th><th>异常</th></tr></thead><tbody>';
+      tableHtml += p.checkItems.map(function(it) {
+        var badges = '';
+        if (it._dimAnnotation) {
+          var mk = it._dimAnnotation.markers || [];
+          var vals = it._dimAnnotation.values || [];
+          var desc = it._dimAnnotation.partDesc || '';
+          var n = Math.max(mk.length, vals.length, 1);
+          for (var i = 0; i < n; i++) {
+            var symbol = desc ? (mk[i] ? '<span class="ds">' + mk[i].symbol + '</span> <span class="dp">' + desc + '</span>' : '<span class="dp">' + desc + '</span>') : (mk[i] ? '<span class="ds">' + mk[i].symbol + '</span>' : '');
+            badges += '<span class="db" onclick="event.stopPropagation();App.scrollToDwg(' + (mk[i]?mk[i].num:it.seq) + ')">' + symbol + '<span class="dv">' + (vals[i]||it.standard.substring(0,35)) + '</span></span>';
+          }
+        }
+        if (it._imageRefs && it._imageRefs.length > 0) {
+          for (var j = 0; j < it._imageRefs.length; j++) {
+            badges += '<span class="ib" onclick="event.stopPropagation();App.viewImg(\'' + it._imageRefs[j].url + '\')">📐 图纸</span>';
+          }
+        }
+        return '<tr><td class="cs">' + (it.seq||'') + '</td><td>' + it.category + '</td><td>' + (it.standard||'').replace(/\n/g,'<br>') + (badges?'<div style="margin-top:6px">' + badges + '</div>':'') + '</td><td>' + it.tool + '</td><td>' + it.frequency + '</td><td>' + it.sampleSize + '</td><td>' + it.controlMethod + '</td><td>' + it.reactionPlan + '</td></tr>';
+      }).join('') + '</tbody></table></div>';
+
+      document.getElementById('main').innerHTML = '<div class="br"><button class="bb" onclick="App.go(App.backTo)">← 返回</button></div><div class="dh"><h2>' + p.productName + '</h2><div class="di"><span>编号: ' + p.productId + '</span><span>等级: ' + p.importanceLevel + '</span><span>类型: ' + p.inspectionType + '</span><span>版本: ' + p.version + '</span><span>编制: ' + (p.preparedBy||'-') + '</span><span>日期: ' + (p.preparedDate||'-') + '</span></div></div>' + techHtml + tableHtml + dwgHtml;
+
+      setTimeout(function() {
+        var dz = document.getElementById('dz-dwg');
+        if (dz) { dz.onclick = function() { document.getElementById('fi-dwg').click(); }; }
+      }, 150);
+    }).catch(function(e){ App.err(e.message); });
+  },
+
+  scrollToDwg: function(num) {
+    var dg = document.querySelector('.dg');
+    if (dg) {
+      dg.querySelectorAll('.dc').forEach(function(c) {
+        c.style.borderColor = parseInt((c.querySelector('.dn')&&c.querySelector('.dn').textContent.match(/\d+/g)||['0'])[0])===num?'#f59e0b':'var(--border)';
+      });
+    }
+  },
+
+  showSearch: function(prefill) {
+    var h = '<div class="sh"><h3>🔍 智能搜索</h3><div style="font-size:13px;color:var(--muted);margin-bottom:12px">搜索产品编号、零件名称、尺寸公差、材料牌号、标准号</div><div class="sr2"><input id="sq" value="' + (prefill||'') + '" placeholder="产品名 / 编号 / 尺寸 / 材料 / 标准号…" onkeydown="if(event.key===&quot;Enter&quot;)App.search()"><button onclick="App.search()">搜索</button></div></div><div id="sres"></div>';
+    document.getElementById('main').innerHTML = h;
+    if (prefill) this.search();
+  },
+
+  search: function() {
+    var q = document.getElementById('sq').value.trim();
+    if (!q) return;
+    var div = document.getElementById('sres');
+    div.innerHTML = '<div class="ph">⏳ 搜索中…</div>';
+    var self = this;
+    Auth.get('/api/products/search/all?q=' + encodeURIComponent(q)).then(function(d) {
+      if (d.total === 0) {
+        div.innerHTML = '<div class="emp">🔎 未找到 &quot;' + q + '&quot; 的相关结果</div>';
+        return;
+      }
+      div.innerHTML = '<div style="margin-bottom:12px;padding:8px 14px;background:var(--pri-bg);border-radius:8px;font-size:13px;color:var(--pri);font-weight:500">找到 <b>' + d.total + '</b> 个匹配结果</div>' + d.results.map(function(r) {
+        return '<div class="pcard" onclick="App.showDetail(&quot;' + r.id + '&quot;)" style="margin-bottom:12px"><h4>' + r.productName + ' ' + (r.metaMatch?'<small style="color:var(--pri);font-weight:700">⭐ 匹配</small>':'') + '</h4><div class="pcid">#' + r.productId + ' | ' + r.inspectionType + '</div>' + (r.matchedItems||[]).slice(0,5).map(function(it) {
+          return '<div style="font-size:12px;padding:4px 0;color:var(--txt2)"><span style="font-weight:700;color:var(--pri)">#' + it.seq + ' ' + it.category + ':</span> ' + it.standard.substring(0,80) + ' <span style="color:var(--muted)">— ' + it.tool + ', ' + it.frequency + '</span></div>';
+        }).join('') + '</div>';
+      }).join('');
+    }).catch(function(e){ App.err(e.message); });
+  },
+
+  showQA: function() {
+    document.getElementById('main').innerHTML = '<h2 style="margin-bottom:18px;font-size:26px;font-weight:720;color:#0a1b32;letter-spacing:-.5px">💬 智能质检问答</h2><div class="qp"><div style="font-weight:650;font-size:15px;margin-bottom:4px;color:var(--txt)">基于知识库的 AI 问答</div><div style="font-size:12px;color:var(--muted);margin-bottom:12px">支持：尺寸编号查询 | 公差范围 | 技术要求 | 材料规格 | 标准号检索</div><div class="qs"><span onclick="App.fillQA(\'冷凝器芯体2号部分尺寸和公差是多少？\')">🔍 芯体②号尺寸</span><span onclick="App.fillQA(\'集流管④号尺寸公差\')">📏 集流管④号公差</span><span onclick="App.fillQA(\'DS122阻燃标准\')">🔥 DS122阻燃</span><span onclick="App.fillQA(\'冷凝器芯体总成对角线公差\')">📐 芯体对角线</span><span onclick="App.fillQA(\'冷凝器芯体有哪些技术要求？\')">📋 芯体技术要求</span></div><div class="qr2"><textarea id="qaQ" placeholder="例：冷凝器芯体③号部分尺寸和公差是多少？"></textarea><button id="qaBtn" onclick="App.ask()">提问</button></div><div class="qa" id="qaA"></div></div>';
+  },
+
+  fillQA: function(t) { document.getElementById('qaQ').value = t; document.getElementById('qaQ').focus(); },
+
+  ask: function() {
+    var q = document.getElementById('qaQ').value.trim();
+    if (!q) return;
+    var btn = document.getElementById('qaBtn');
+    btn.disabled = true; btn.textContent = '查询中…';
+    var ans = document.getElementById('qaA');
+    ans.style.display = 'block'; ans.innerHTML = '<div class="ph">⏳ 检索知识库中…</div>';
+    var self = this;
+    Auth.get('/api/qa/ask', {method:'POST',body:JSON.stringify({question:q})}).then(function(d) {
+      var dH = '';
+      if (d.matchedProducts && d.matchedProducts.length > 0) {
+        var hd = d.matchedProducts.filter(function(p) { return p.drawings && p.drawings.length > 0; });
+        if (hd.length > 0) {
+          dH = '<div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px"><b style="font-size:14px">📐 关联图纸</b><div class="dg" style="margin-top:8px">';
+          for (var i = 0; i < hd.length; i++) {
+            for (var j = 0; j < Math.min((hd[i].drawings||[]).length, 6); j++) {
+              var dwj = hd[i].drawings[j];
+              dH += '<div class="dc" onclick="App.viewImg(\'' + dwj.url + '\')"><img src="' + dwj.url + '" loading="lazy" style="height:90px"><div class="dn">' + hd[i].productName + '</div></div>';
+            }
+          }
+          dH += '</div></div>';
+        }
+      }
+      ans.innerHTML = '<span class="mt ' + (d.mode==='ai'?'mai':'mof') + '">' + (d.mode==='ai'?'🤖 AI 回答':'📋 检索结果') + '</span><div>' + d.answer + '</div>' + dH;
+    }).catch(function(e){ ans.innerHTML = '<span class="mt mof">错误</span> ' + e.message; }).finally(function(){ btn.disabled = false; btn.textContent = '提问'; });
+  },
+
+  showContracts: function(type) {
+    var label = type==='purchase'?'采购合同':'销售合同';
+    var perm = type==='purchase'?'contracts:purchase:read':'contracts:sales:read';
+    if (!this.can(perm)) { document.getElementById('main').innerHTML = '<div class="ph">🔒 权限不足</div>'; return; }
+    var self = this;
+    Auth.get('/api/contracts/' + type).then(function(d) {
+      var files = d.contracts || [];
+      var flist = '';
+      if (files.length > 0) {
+        flist = '<div style="margin-top:14px;display:flex;flex-direction:column;gap:8px">';
+        files.forEach(function(f) {
+          var sz = f.size ? Math.round(f.size/1024) + 'KB' : '';
+          flist += '<div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px;font-size:13px"><span>📄</span><a href="' + f.url + '" target="_blank" style="color:var(--pri);flex:1;text-decoration:none;font-weight:500">' + f.name + '</a><span style="color:var(--muted);font-size:11px">' + sz + '</span><span data-action="delete" data-type="' + type + '" data-name="' + encodeURIComponent(f.name) + '" style="color:var(--fail);cursor:pointer;font-size:11px;padding:4px 10px;border-radius:6px" onmouseover="this.style.background=\'#fee2e2\'" onmouseout="this.style.background=\'none\'">删除</span></div>';
+        });
+        flist += '</div>';
+      } else {
+        flist = '<div class="emp" style="margin-top:14px">暂无合同文件</div>';
+      }
+      document.getElementById('main').innerHTML = '<h2 style="margin-bottom:18px;font-size:26px;font-weight:720;color:#0a1b32;letter-spacing:-.5px">📑 ' + label + '</h2><div class="sh"><h3>📂 ' + label + '管理</h3>' + flist + '<div class="dropzone" id="dz-' + type + '" style="margin-top:18px;border:2px dashed var(--border);border-radius:10px;padding:24px;text-align:center;cursor:pointer;background:#fafbfc" ondragover="event.preventDefault();this.style.borderColor=\'var(--pri)\';this.style.background=\'#dbeafe\'" ondragleave="this.style.borderColor=\'var(--border)\';this.style.background=\'#fafbfc\'" ondrop="App.handleDrop(event,\'' + type + '\')"><div style="font-size:28px;margin-bottom:8px">📤</div><div style="font-size:13px;color:var(--muted)">拖拽 PDF / 图片 / Excel 到此处上传</div><div style="font-size:11px;color:var(--muted);margin-top:4px">或 <span style="color:var(--pri);text-decoration:underline;cursor:pointer">点击选择文件</span></div><input type="file" id="fi-' + type + '" multiple accept=".pdf,.doc,.docx,.xlsx,.xls,.jpg,.jpeg,.png,.txt" style="display:none" onchange="App.uploadFiles(\'' + type + '\')"></div></div>';
+      setTimeout(function() {
+        var dz = document.getElementById('dz-' + type);
+        if (dz) { dz.onclick = function() { document.getElementById('fi-' + type).click(); }; }
+      }, 100);
+    }).catch(function(e){ App.err(e.message); });
+  },
+
+  handleDrop: function(ev, type) {
+    ev.preventDefault();
+    ev.target.style.borderColor = 'var(--border)';
+    ev.target.style.background = '#fafbfc';
+    if (ev.dataTransfer.files.length > 0) this.doUpload(type, ev.dataTransfer.files);
+  },
+
+  uploadFiles: function(type) {
+    var inp = document.getElementById('fi-' + type);
+    if (inp && inp.files.length > 0) this.doUpload(type, inp.files);
+  },
+
+  doUpload: function(type, files) {
+    var fd = new FormData();
+    for (var i = 0; i < files.length; i++) fd.append('files', files[i]);
+    var self = this;
+    var t = Auth.token();
+    fetch('/api/contracts/' + type + '/upload', {method:'POST',headers:{'Authorization':'Bearer ' + t},body:fd})
+      .then(function(r) { return r.json(); })
+      .then(function(d) { App.err(d.message||'上传成功'); setTimeout(function() { self.showContracts(type); }, 500); })
+      .catch(function(e) { App.err('上传失败: ' + e.message); });
+  },
+
+  dropDrawing: function(ev, pid) {
+    ev.preventDefault();
+    ev.target.style.borderColor = 'var(--border)';
+    ev.target.style.background = '#fafbfc';
+    if (ev.dataTransfer.files.length > 0) this.doUploadDrawing(pid, ev.dataTransfer.files);
+  },
+
+  uploadDrawing: function(pid) {
+    var inp = document.getElementById('fi-dwg');
+    if (inp && inp.files.length > 0) this.doUploadDrawing(pid, inp.files);
+  },
+
+  doUploadDrawing: function(pid, files) {
+    var fd = new FormData();
+    for (var i = 0; i < files.length; i++) fd.append('files', files[i]);
+    var self = this;
+    var t = Auth.token();
+    fetch('/api/products/' + pid + '/drawings', {method:'POST',headers:{'Authorization':'Bearer ' + t},body:fd})
+      .then(function(r) { return r.json(); })
+      .then(function(d) { App.err(d.message||'上传成功'); setTimeout(function() { self.showDetail(pid); }, 600); })
+      .catch(function(e) { App.err('上传失败: ' + e.message); });
+  },
+
+  deleteDrawing: function(pid, name) {
+    if (!confirm('确定删除此图纸？')) return;
+    var self = this;
+    var t = Auth.token();
+    fetch('/api/products/' + pid + '/drawings/' + name, {method:'DELETE',headers:{'Authorization':'Bearer ' + t}})
+      .then(function(r) { if (!r.ok) throw new Error('删除失败'); return r.json(); })
+      .then(function() { App.err('已删除'); setTimeout(function() { self.showDetail(pid); }, 400); })
+      .catch(function(e) { App.err(e.message); });
+  },
+
+  showAddProduct: function() {
+    this.backTo = 'products';
+    var h = '<div class="br"><button class="bb" onclick="App.go(App.backTo)">← 返回</button></div>';
+    h += '<h2 style="margin-bottom:18px;font-size:26px;font-weight:720;color:#0a1b32;letter-spacing:-.5px">＋ 新增产品</h2>';
+    h += '<div class="qp">';
+    h += '<div class="ts-row"><span class="ts-label">产品编号*</span><input id="np-id" style="flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--txt);font-family:inherit" placeholder="如 P100206009"></div>';
+    h += '<div class="ts-row"><span class="ts-label">产品名称*</span><input id="np-name" style="flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--txt);font-family:inherit" placeholder="如 冷凝器芯体"></div>';
+    h += '<div class="ts-row"><span class="ts-label">等级</span><select id="np-lvl" style="padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--card)"><option value="重要部件">重要部件</option><option value="安全部件">安全部件</option><option value="一般部件">一般部件</option></select></div>';
+    h += '<div class="ts-row"><span class="ts-label">检验类型</span><select id="np-type" style="padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--card)"><option value="制程检验">制程检验</option><option value="进料检验">进料检验</option><option value="出货检验">出货检验</option></select></div>';
+    h += '<div class="ts-row"><span class="ts-label">版本</span><input id="np-ver" value="A/0" style="flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--txt);font-family:inherit"></div>';
+    h += '<div class="ts-row"><span class="ts-label">编制人</span><input id="np-by" style="flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--txt);font-family:inherit" placeholder="编制人姓名"></div>';
+    h += '<div class="ts-row"><span class="ts-label">编制日期</span><input id="np-date" type="date" style="flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--txt);font-family:inherit"></div>';
+    h += '<div class="ts-row"><span class="ts-label">检验项目<br><small style="color:var(--muted)">每行: 序号,类别,标准,工具,频次,容量,控制,异常</small></span><textarea id="np-items" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;min-height:100px;font-family:\'SF Mono\',\'Cascadia Code\',\'Consolas\',monospace;background:var(--bg);color:var(--txt)" placeholder="1,尺寸单位mm,320±1,高度尺,2小时/次,1件,,"></textarea></div>';
+    h += '<div style="margin-top:16px;display:flex;gap:10px;align-items:center"><button onclick="App.addProduct()" style="padding:11px 32px;background:linear-gradient(135deg,var(--pri),var(--pri-dark));color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-size:14px;font-family:inherit">创建产品</button><span style="font-size:11px;color:var(--muted)">创建后可在详情页上传图纸</span></div>';
+    h += '</div>';
+    document.getElementById('main').innerHTML = h;
+  },
+
+  addProduct: function() {
+    var id = document.getElementById('np-id').value.trim();
+    var name = document.getElementById('np-name').value.trim();
+    if (!id || !name) { App.err('产品编号和名称为必填'); return; }
+    var raw = document.getElementById('np-items').value.trim();
+    var items = [];
+    if (raw) {
+      raw.split('\n').forEach(function(line) {
+        var parts = line.split(',');
+        if (parts.length >= 3) {
+          items.push({
+            seq: items.length + 1,
+            category: (parts[1]||'').trim(), standard: (parts[2]||'').trim(),
+            tool: (parts[3]||'').trim(), frequency: (parts[4]||'').trim(),
+            sampleSize: (parts[5]||'1件').trim(), controlMethod: (parts[6]||'').trim(),
+            reactionPlan: (parts[7]||'').trim()
+          });
+        }
+      });
+    }
+    var body = {
+      productId: id, productName: name,
+      importanceLevel: document.getElementById('np-lvl').value,
+      inspectionType: document.getElementById('np-type').value,
+      version: document.getElementById('np-ver').value,
+      preparedBy: document.getElementById('np-by').value,
+      preparedDate: document.getElementById('np-date').value,
+      checkItems: items
+    };
+    var self = this;
+    Auth.get('/api/products', {method:'POST',body:JSON.stringify(body)}).then(function(d) {
+      App.err(d.message||'创建成功');
+      setTimeout(function() { self.go('products'); }, 500);
+    }).catch(function(e) { App.err(e.message); });
+  },
+
+  viewImg: function(url) {
+    var lb = document.createElement('div');
+    lb.className = 'lb';
+    lb.innerHTML = '<span onclick="event.stopPropagation();this.parentElement.remove()" style="position:fixed;top:20px;right:28px;color:#fff;font-size:32px;cursor:pointer;z-index:10000;opacity:.7;transition:opacity .15s" onmouseover="this.style.opacity=\'1\'" onmouseout="this.style.opacity=\'.7\'">&times;</span><img src="' + url + '">';
+    lb.onclick = function() { lb.remove(); };
+    document.body.appendChild(lb);
+  },
+
+  err: function(msg) {
+    var t = document.createElement('div');
+    t.className = 'toast'; t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(function() { t.remove(); }, 3500);
+  }
+};
+
+/* ========== 初始化 ========== */
+if (location.pathname==='/app'||location.pathname==='/app/') {
+  document.addEventListener('DOMContentLoaded', function() { App.init(); });
+}
+
+/* 全局事件代理：合同删除 */
+document.addEventListener('click', function(ev) {
+  var el = ev.target.closest('[data-action="delete"]');
+  if (!el) return;
+  ev.stopPropagation(); ev.preventDefault();
+  var type = el.getAttribute('data-type');
+  var name = el.getAttribute('data-name');
+  if (!confirm('确定删除 ' + decodeURIComponent(name) + ' ？')) return;
+  var t = Auth.token();
+  fetch('/api/contracts/' + type + '/files/' + name, {method:'DELETE',headers:{'Authorization':'Bearer ' + t}})
+    .then(function(r) { if (!r.ok) throw new Error('删除失败'); return r.json(); })
+    .then(function() { App.err('已删除'); App.go(type); })
+    .catch(function(e) { App.err(e.message); });
+});
+</script>
+
+<div id="loginPage" style="display:none">
+<div class="login-wrap"><div class="login-card">
+<div class="logo-wrap"><div class="logo-icon">🔬</div></div>
+<h1>仪达质检知识库</h1><p class="sub">智能热管理科技（马鞍山）有限公司<br>汽车空调零件质量规范检查系统</p>
+<div class="field-group"><label>用户名</label></div>
+<input id="lu" placeholder="请输入用户名">
+<div class="field-group"><label>密码</label></div>
+<input id="lp" type="password" placeholder="请输入密码">
+<button onclick="doLogin()">登 录</button>
+<div class="login-err" id="le"></div>
+<div class="login-hint">质检员小王 / 123456 &nbsp;|&nbsp; 采购小李 / 123456<br>销售小张 / 123456 &nbsp;|&nbsp; 管理员 / admin123</div>
+</div></div></div>
+
+<script>
+if (location.pathname==='/'||location.pathname==='') { document.getElementById('loginPage').style.display=''; if (Auth.ok()) location.href='/app'; }
+async function doLogin() { var e=document.getElementById('le'); try { await Auth.login(document.getElementById('lu').value.trim(),document.getElementById('lp').value.trim()); location.href='/app'; } catch(x) { e.style.display='block'; e.textContent=x.message; } }
+document.addEventListener('keydown',function(ev){ if(ev.key==='Enter') doLogin(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "productId": "DS122-11615",
+  "source": "excel_extraction",
+  "techSpecs": [
+    {
+      "seq": 2,
+      "category": "标签与外观",
+      "standard": "1.产品表面清洁，周边剪切平整\n2.不允许有褶皱，破损，油污\n3.离型纸易剥离",
+      "tool": "目视",
+      "frequency": "每批",
+      "controlMethod": "进料检验记录单",
+      "reactionPlan": "隔离/报告"
+    },
+    {
+      "seq": 4,
+      "category": "材料",
+      "standard": "材料为PU(黑色)，材料密度30±2kg/m3",
+      "tool": "核对供方材质报告",
+      "frequency": "每季度",
+      "controlMethod": "供方材质报告",
+      "reactionPlan": ""
+    },
+    {
+      "seq": 4,
+      "category": "材料",
+      "standard": "不干胶采用综研的产品（A-500）",
+      "tool": "核对供方材质报告",
+      "frequency": "",
+      "controlMethod": "",
+      "reactionPlan": ""
+    },
+    {
+      "seq": 5,
+      "category": "性能",
+      "standard": "初粘性:室温下≥20#钢球，180° 剥离强度 (N/25mm)≥10,500gX8h位移量≤6mm;",
+      "tool": "核对供方年度型式报告",
+      "frequency": "每年",
+      "controlMethod": "供方年度型式报告",
+      "reactionPlan": ""
+    },
+    {
+      "seq": 5,
+      "category": "性能",
+      "standard": "拉伸强度≥130Pa，断裂伸长率≥120%;",
+      "tool": "核对供方年度型式报告",
+      "frequency": "",
+      "controlMethod": "",
+      "reactionPlan": ""
+    },
+    {
+      "seq": 5,
+      "category": "性能",
+      "standard": "耐温性能:-40℃-105℃，外观无变化",
+      "tool": "核对供方年度型式报告",
+      "frequency": "",
+      "controlMethod": "",
+      "reactionPlan": ""
+    },
+    {
+      "seq": 5,
+      "category": "性能",
+      "standard": "阻燃性满足GB 8410",
+      "tool": "核对供方年度型式报告",
+      "frequency": "",
+      "controlMethod": "",
+      "reactionPlan": ""
+    }
+  ]
+}
